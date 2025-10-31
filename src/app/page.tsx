@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { AssistantSelector } from "@/components/AssistantSelector";
 import { ChatKitInterface } from "@/components/ChatKitInterface";
 import { AIAssistant, AI_ASSISTANTS } from "@/types/chat";
 
-export default function Home() {
+function HomeContent() {
   const [selectedAssistant, setSelectedAssistant] =
     useState<AIAssistant | null>(null);
   const searchParams = useSearchParams();
@@ -58,5 +58,17 @@ export default function Home() {
         />
       </div>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background p-4 flex items-center justify-center">
+        <div className="text-muted-foreground">Loading...</div>
+      </div>
+    }>
+      <HomeContent />
+    </Suspense>
   );
 }
