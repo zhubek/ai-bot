@@ -5,15 +5,14 @@ FROM base AS deps
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN npm install --omit=dev
 
-# Rebuild the source code only when needed
+# Install all dependencies for build
 FROM base AS builder
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+COPY package*.json ./
+RUN npm install
 COPY . .
-
-# Build Next.js app
 RUN npm run build
 
 # Production image, copy all the files and run next
@@ -27,7 +26,7 @@ RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
+COPY --from=deps /app/node_modules ./node_modules
 COPY --from=builder /app/package*.json ./
 
 USER nextjs
