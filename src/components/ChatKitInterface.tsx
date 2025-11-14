@@ -39,7 +39,7 @@ export function ChatKitInterface({ assistant, userId, onBack }: ChatKitInterface
 
         if (!response.ok) {
           console.error("[ChatKitInterface] Session creation failed:", response.status);
-          throw new Error("Failed to create ChatKit session");
+          throw new Error("Не удалось создать сессию ChatKit");
         }
 
         const data = await response.json();

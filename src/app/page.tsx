@@ -29,10 +29,10 @@ function HomeContent() {
       <div className="min-h-screen bg-background p-4 flex items-center justify-center">
         <div className="text-center space-y-4">
           <h1 className="text-2xl font-bold text-foreground">
-            User ID Required
+            Требуется ID пользователя
           </h1>
           <p className="text-muted-foreground">
-            Please provide a userId in the URL: ?userId=your-id
+            Пожалуйста, укажите userId в URL: ?userId=ваш-id
           </p>
         </div>
       </div>
@@ -65,7 +65,7 @@ export default function Home() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-background p-4 flex items-center justify-center">
-        <div className="text-muted-foreground">Loading...</div>
+        <div className="text-muted-foreground">Загрузка...</div>
       </div>
     }>
       <HomeContent />

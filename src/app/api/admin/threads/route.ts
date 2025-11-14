@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
 
     if (!apiKey) {
       return NextResponse.json(
-        { error: "OpenAI API key not configured" },
+        { error: "API ключ OpenAI не настроен" },
         { status: 500 }
       );
     }
@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
       console.error("Failed to fetch threads:", errorData);
       return NextResponse.json(
         {
-          error: "Failed to fetch threads from ChatKit",
+          error: "Не удалось получить потоки из ChatKit",
           details: errorData,
         },
         { status: response.status }
@@ -44,8 +44,8 @@ export async function GET(request: NextRequest) {
     console.error("Error fetching threads:", error);
     return NextResponse.json(
       {
-        error: "Internal server error",
-        details: error instanceof Error ? error.message : "Unknown error",
+        error: "Внутренняя ошибка сервера",
+        details: error instanceof Error ? error.message : "Неизвестная ошибка",
       },
       { status: 500 }
     );

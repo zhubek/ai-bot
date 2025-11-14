@@ -3,8 +3,8 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI Bot",
-  description: "AI Bot application",
+  title: "ИИ Бот",
+  description: "Приложение ИИ Бот",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <head>
         {/* Load ChatKit web component from OpenAI CDN */}
         <Script

@@ -16,14 +16,14 @@ export async function POST(request: NextRequest) {
 
     if (!workflowId) {
       return NextResponse.json(
-        { error: "Workflow ID not configured" },
+        { error: "Workflow ID не настроен" },
         { status: 500 }
       );
     }
 
     if (!apiKey) {
       return NextResponse.json(
-        { error: "OpenAI API key not configured" },
+        { error: "API ключ OpenAI не настроен" },
         { status: 500 }
       );
     }
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
       console.error("ChatKit session creation failed:", errorData);
       return NextResponse.json(
         {
-          error: "Failed to create ChatKit session",
+          error: "Не удалось создать сессию ChatKit",
           details: errorData,
         },
         { status: response.status }
@@ -74,8 +74,8 @@ export async function POST(request: NextRequest) {
     console.error("Error creating ChatKit session:", error);
     return NextResponse.json(
       {
-        error: "Internal server error",
-        details: error instanceof Error ? error.message : "Unknown error",
+        error: "Внутренняя ошибка сервера",
+        details: error instanceof Error ? error.message : "Неизвестная ошибка",
       },
       { status: 500 }
     );
